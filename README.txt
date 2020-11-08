@@ -1,0 +1,1 @@
+This application was created for the TigerHacks 2020 competition. Based off the theme of 'adventure', this program takes in an input of your current location and provides nearby loccations to vists allowing you to plan your adventure. 
