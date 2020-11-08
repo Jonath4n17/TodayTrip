@@ -1,36 +1,181 @@
-body, html {
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+  height: 80%;
+  width: 80%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+html,
+
+header {
+    margin: 40;
+    padding: 10;
+    min-height: 18vh;
+    font-family: 'Open Sans', Verdana, Geneva, Tahoma, sans-serif;
+    height: 120%
+}
+
+header, .nav, .menu {
+    display: flex;
+    justify-content: normal;
+    align-items: center;
+}
+
+.nav {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    transition: 0.5s;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0,0,0,.2);
+}
+
+.menu {
     margin: 0;
-    font-family: sans-serif;
+    padding: 0;
+    width: 1800;
+    overflow: hidden;
+    transition: 0.5s;
 }
 
-.content {
-    margin: 0 auto;
-    width: 400px;
+.nav input:checked ~ .menu {
+    width: 0px;
 }
 
-table, td, th {
-    border: 1px solid #aaa;
+.menu li {
+    list-style: none;
+    margin: 0 100px;
 }
 
-table {
-    border-collapse: collapse;
-    width: 100%;
+.menu li a {
+    text-decoration: none;
+    color: #666;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.5s;
 }
 
-th {
-    height: 30px;
+.menu li a:hover {
+    color: #161919;
 }
 
-td {
-    text-align: center;
-    padding: 5px;
+.nav input {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    opacity: 0;
 }
 
-.form {
-    margin-top: 20px;
+.nav span {
+    position: absolute;
+    left: 30px;
+    width: 30px;
+    height: 4px;
+    border-radius: 50px;
+    background-color: #f974a1;
+    pointer-events: none;
+    transition: 0.5s;
 }
 
-#content {
-    width: 70%;
+.nav input:checked ~ span {
+    background-color: black;
 }
 
+.nav span:nth-child(2) {
+    transform: translateY(0) rotate(45deg);
+}
+
+.nav input:checked ~ span:nth-child(2) {
+    transform: translateY(0);
+}
+.nav span:nth-child(3) {
+    transform: translateY(0) rotate(-45deg);
+}
+
+.nav input:checked ~ span:nth-child(3) {
+    transform: translateY(0);
+}
+
+body {
+  /* height: 100%; */
+  width: 100%;
+  height: 100vh;
+  margin: 50;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: linear-gradient(to right,#1ed3b5, #3ec1a4, #34a7cb);
+  
+}
+
+button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.intButton {
+  background-color: #008CBA; 
+  color: white; 
+  border: 2px solid #008CBA;
+  border-radius: 12px;
+}
+
+.intButton:hover {
+  background-color: white;
+  color: black;
+}
+
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  font-size: 62,5%;
+}
+
+.form__label {
+  margin-top: 0.7rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  transition: all 0.3s;
+  transform: translateY(0rem);
+}
+
+.form__input {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1.2rem;
+	margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+  align-items: center
+
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
+}

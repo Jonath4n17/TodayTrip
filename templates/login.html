@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"
+<link href="https://panel.chatcompose.com/static/EN/global/export/css\main.0ec6acf6.css" rel="stylesheet">    
+<script async type="text/javascript" src="https://panel.chatcompose.com/static/EN/global/export/js\main.dec259c7.js" user="Khjgv-AdventureBot"></script>  
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
+
+{% block body%}
+    <div class="initial">
+  
+    <img src="{{ url_for('static', filename='todaytrip.png')}}" height=350px width=400px class="logo">
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="intButton">Login</button>
+    </div>
+
+    <div class="parallax"></div>
+
+    <div style="height:1000px;background-color:white;font-size:36px">
+
+    </div>
+
+    <div id="id01" class="modal">
+
+    <form class="modal-content animate" action="/action_page.php" method="post" id="login-form">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" id = "username" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" id = "password" placeholder="Enter Password" name="psw" required>
+
+      <a href="{{ url_for('logintoindex')}}">Log In</a>
+      
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+    </form>
+    </div>
+
+
+<style type="text/css" media="screen">
+    /* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+ 
+body {
+  /*background-image: url('https://bit.ly/2I4Jorb');
+  background-size: cover; */
+}
+
+/*Button Styles*/
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 22px;
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+#login-form-submit {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  background-color: #4CAF50;
+  cursor: pointer;
+  outline: none;
+}
+
+.initial{  
+  position: absolute;
+  left: 0;
+  top: 20%;
+  width: 100%;     
+  text-align: center;     
+}  
+
+.parallax {
+  /* The image used */
+  background-image: url("https://bit.ly/2I4Jorb");
+
+  /* Set a specific height */
+  min-height: 1000px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  position: relative;
+}
+
+.container {
+  padding: 10px;
+}
+
+span.psw {
+  vertical-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  color: #000;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+</style>
+
+{% endblock %}

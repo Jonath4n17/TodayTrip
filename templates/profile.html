@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block head%}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}"
+<div class="nav">
+    <input type="checkbox">
+    <span></span>
+    <span></span>
+    <div class="menu">
+      <li><a href="{{ url_for('profiletoindex')}}">Home</a> </li>
+      <li><a href="">Profile</a></li>
+      <li><a href="">Logout</a></li>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
+
+{% block body%}
+<br><br><br>
+<!-- The grid: three columns -->
+<div class="row">
+  <div class="column" onclick="openTab('b1');" >Favourite Locations</div>
+  <br>
+  <div class="column" onclick="openTab('b2');" >Trip History</div>
+  <br>
+  <div class="column" onclick="openTab('b3');" >Settings</div>
+</div>
+<br><br>
+<!-- The expanding grid (hidden by default) -->
+<div id="b1" class="containerTab" style="display:none;">
+  <!-- If you want the ability to close the container, add a close button -->
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Favourite Locations</h2>
+  <p>places</p>
+</div>
+
+<div id="b2" class="containerTab" style="display:none;">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Trip History</h2>
+  <p>Markham Canada</p>
+</div>
+
+<div id="b3" class="containerTab" style="display:none;">
+  <span onclick="this.parentElement.style.display='none'" class="closebtn">x</span>
+  <h2>Settings</h2>
+  <p>settings</p>
+</div>
+
+<script>
+function openTab(tabName) {
+  var i, x;
+  x = document.getElementsByClassName("containerTab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(tabName).style.display = "block";
+}
+</script>
+
+<style type="text/css" media="screen">
+.column {
+    margin: auto;
+    float: center;
+    width: 50.33%;
+    padding: 50px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+    background: #f1a3e7;
+    border-style:solid;
+    border-radius: 10px;
+  
+  }
+  
+.containerTab {
+    padding: 20px;
+    color: white;
+    height: 200px;
+    background-color: #bf8fff;
+  }
+  
+  /* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Closable button inside the image */
+.closebtn {
+    float: right;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+  }
+  
+</style>
+
+{% endblock %}

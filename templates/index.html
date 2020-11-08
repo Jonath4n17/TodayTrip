@@ -1,40 +1,98 @@
 {% extends 'base.html' %}
 
 {% block head%}
-<title>Task Master</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlT-HpvBFNEDO3Bw1msw8ytcYr8IkAwFI&callback=initMap&libraries=&v=weekly"
+        defer
+        ></script>
+    <div class="nav">
+    <input type="checkbox">
+    <span></span>
+    <span></span>
+    <div class="menu">
+      <li><a href="">Home</a> </li>
+      <li><a href="{{ url_for('indextoprofile')}}">Profile</a></li>
+      <li><a href="{{ url_for('indextologin')}}">Logout</a></li>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}
 
 {% block body%}
+
+<br> 
+<div id="form__group">
+    <form action="{{ url_for('handle_data') }}" method="POST">
+        <input type="text" class="form__input" id="country" placeholder="Country" name="country"required>
+        <label for="country" class="form__label"></label>
+        <input type="text" class="form__input" id="city" placeholder="City" name="city" required>
+        <label for="name" class="form__label"></label>
+        <input type="text" class="form__input" id="address" placeholder="Address" name="address" required>
+        <label for="name" class="form__label"></label>
+        <input type="text" class="form__input" id="radius" placeholder="Radius (miles)" name="radius" required>
+        <label for="name" class="form__label"></label>
+        <input type="text" class="form__input" id="keywords" placeholder="Keywords" name="keywords" required>
+        <label for="name" class="form__label"></label>
+        <center><button onclick="document.getElementById('id01').style.display='block'" value="submit" style="width:auto;" class="intButton">Go</button></center>
+    </form>
+</div>
+
+
+
 <div class="content">
-    <h1 style="text-align:center">Task Master</h1>
+    <h1 style="text-align:center">Find Your Adventure</h1>
     {% if tasks|length < 1 %}
-    <h4>There are no tasks. Create one below!</h4>
+    <h4 style="text-align:center">Please compelete the form above</h4>
     {% else %}
 
     <table>
         <tr>
-            <th>Task</th>
-            <th>Added</th>
-            <th stlye="text-align:center">Actions</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th stlye="text-align:center">Keywords</th>
+            <!-- <th>Rating</th> -->
         </tr>
         {% for task in tasks %}
             <tr>
-                <td>{{ task.content}}</td>
-                <td>{{ task.date_created.date() }}</td>
+                <td>{{ task.name}}</td>
+                <td>{{ task.address}}</td>
+                <td>{{ task.keywords}}</td>
+                <!-- <td>{{ task.rating}}</td> -->
+                <!-- <td>{{ task.date_created.date() }}</td> -->
                 <td>
                     <a href="/delete/{{task.id}}">Delete</a>
-                    <br>
-                    <a href="/update/{{task.id}}">Update</a>
+                    <!-- <br>
+                    <a href="/update/{{task.id}}">Update</a> -->
                 </td>
             </tr>
         {% endfor %}
     </table>
     {% endif %}
-    <div class="form">
-        <form action="/" method="POST">
-            <input type="text" name="content" id="content">
-            <input type="submit" value="Add Task">
-        </form>
-    </div>
-<div>
+    <a href="/delete_all" style="text-align:center;">Delete All</a>
+    <br>
+    <div id="map"></div>
+
+    <script>
+        let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+}
+    </script>
+
+<style type="text/css" media="screen"> 
+    #map {
+  height: 80%;
+  width: 80%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+</style>
+
 {% endblock %}
