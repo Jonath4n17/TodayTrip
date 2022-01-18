@@ -1,4 +1,4 @@
-This application was created for the TigerHacks 2020 competition. Based off the theme of 'adventure', this program takes in an input of your current location and provides nearby locations to vist allowing you to plan your adventure. 
+This application was created for the TigerHacks 2020 competition. Based off the theme of 'adventure', this program takes in an input of your current location and provides nearby locations to vist allowing you to plan your adventure. Python, Flask, and SQLAlchemy were all utilised.
 
 Using the trip finder:
 - Captilize the country and city
